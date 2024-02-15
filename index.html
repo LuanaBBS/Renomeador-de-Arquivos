@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renomeador de Arquivos</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+        <input type="file" id="fileInput" multiple>
+        <label for="prefixoInput">Prefixo:</label>
+        <input type="text" id="prefixoInput">
+        <button onclick="renomearArquivos()">Renomear</button>
+    
+    <table id="fileTable">
+      <head>
+        <tr>
+          <th>Arquivo Original</th>
+          <th>Novo Nome</th>
+          <th>Ações</th>
+        </tr>
+      </head>
+      <body></body>
+    </table>
+
+    <script src="renomear-arquivos.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- // Importando módulos do Electron
+const { app, BrowserWindow } = require("electron");
+const path = require("path");
+
+// Função para renomear arquivos
+function renomearArquivos() {
+  // Obtendo elementos do HTML usando seus IDs
+  const fileInput = document.getElementById("fileInput");
+  const prefixoInput = document.getElementById("prefixoInput");
+  const files = fileInput.files;
+  const prefixo = prefixoInput.value.trim();
+  const tableBody = document.querySelector("#fileTable tbody");
+
+  // Limpar tabela
+  tableBody.innerHTML = "";
+
+  // Iterando sobre os arquivos selecionados
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const novoNome = prefixo + "-" + file.name;
+
+    // Adicionando linha à tabela
+    const newRow = tableBody.insertRow();
+    const cellOriginal = newRow.insertCell(0);
+    const cellNovoNome = newRow.insertCell(1);
+    const cellAcoes = newRow.insertCell(2);
+
+    // Preenchendo as células da tabela
+    cellOriginal.textContent = file.name;
+    cellNovoNome.textContent = novoNome;
+
+    // Adicionando campo de entrada para novo nome
+    const inputNovoNome = document.createElement("input");
+    inputNovoNome.type = "text";
+    inputNovoNome.value = novoNome;
+    cellNovoNome.appendChild(inputNovoNome);
+
+    // Adicionando botão de download
+    const downloadButton = document.createElement("button");
+    downloadButton.textContent = "Baixar";
+    downloadButton.addEventListener("click", () =>
+      baixarArquivo(file, inputNovoNome.value)
+    );
+    cellAcoes.appendChild(downloadButton);
+  }
+}
+
+// Função assíncrona para baixar arquivo
+async function baixarArquivo(file, novoNome) {
+  try {
+    // Obtendo o arquivo como Blob através de uma requisição fetch
+    const response = await fetch(URL.createObjectURL(file));
+    const blob = await response.blob();
+
+    // Criando um link para download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = novoNome;
+
+    // Abrindo uma nova janela com o link
+    const newWindow = window.open("", "_blank");
+    newWindow.document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+    // Limpar o link da memória após um curto período
+    setTimeout(() => {
+      URL.revokeObjectURL(downloadLink.href);
+      newWindow.close();
+    }, 100);
+  } catch (error) {
+    console.error("Erro ao baixar o arquivo:", error);
+  }
+}
+
+// Definindo a janela principal
+let mainWindow;
+
+// Quando o aplicativo Electron estiver pronto
+app.on("ready", () => {
+  // Criando uma nova janela do navegador
+  mainWindow = new BrowserWindow({
+    width: 700,
+    height: 400,
+  });
+  // Carregando o arquivo HTML na janela principal
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
+}); -->
